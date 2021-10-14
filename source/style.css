@@ -1,0 +1,43 @@
+body {
+    background: #fff;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Lexend', sans-serif;
+    font-size: 16px;
+  }
+  
+  input, button {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+  }
+  
+#email_field {
+  display: block;
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#password_field {
+  display: block;
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+  .container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  
+  .box {
+    border: 3px solid #666;
+    background-color: #ddd;
+    border-radius: .5em;
+    padding: 10px;
+    width: 50px;
+    cursor: move;
+  }
+
+  .box.over {
+    border: 3px dotted #666;
+  }

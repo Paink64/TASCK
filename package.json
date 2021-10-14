@@ -1,0 +1,15 @@
+{
+  "name": "TASCK",
+  "version": "1.0.0",
+  "description": "CSE 4550 Project 2021 TASCK by Joaquin Robles, Matthew De La Cruz, Daniel Garcia, Marco Cerrato, Jose Vergara, and Matthew Fayette",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.1.2"
+  }
+}

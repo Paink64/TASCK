@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>TASCK Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="index.js"></script>
+</head>
+<body>
+    <h1>Welcome to TASCK</h1>
+
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+    <button onclick="login()">Sign in</button>
+    <a href="signup.html">Don't have an accout? Sign up</a>
+
+</body>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyCA1jn1ycgnmpbHfHC9MHGkZFATOVMVHWE",
+    authDomain: "tasck-83451.firebaseapp.com",
+    projectId: "tasck-83451",
+    storageBucket: "tasck-83451.appspot.com",
+    messagingSenderId: "668133080399",
+    appId: "1:668133080399:web:61d7f339e672141a90d93a",
+    measurementId: "G-5E4MSVXGLB"
+  };
+</script>
+</html>
