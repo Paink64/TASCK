@@ -1,29 +1,31 @@
 body {
-    background: #fff;
-    padding: 0px;
-    margin: 0px;
+    background: rgb(226, 226, 233);
+    padding: 100px;
+    margin: 100px;
     font-family: 'Lexend', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
   }
   
   input, button {
     font-family: 'Lexend', sans-serif;
-    font-weight: 700;
+    font-weight: 900;
   }
-  
+
 #email_field {
+  margin-top: 50px;
   display: block;
   padding: 15px;
-  width: 100%;
+  width: 20%;
   margin-bottom: 20px;
 }
 #password_field {
   display: block;
   padding: 15px;
-  width: 100%;
-  margin-bottom: 20px;
+  width: 20%;
+  margin-bottom: 10px;
 }
   .container {
+    margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
@@ -39,5 +41,10 @@ body {
   }
 
   .box.over {
-    border: 3px dotted #666;
+    border: 3px dotted rgb(211, 206, 206);
+  }
+  .center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
   }
