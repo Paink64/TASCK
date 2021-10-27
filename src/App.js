@@ -2,12 +2,11 @@ import './index.css';
 import Home from './pages/Home';
 import Nav from './pages/Nav';
 import Tasks from './pages/Tasks';
-import Projects from './pages/Projects';
-import Button from './components/Button';
+import Projects_Page from './pages/Projects_Page';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
-function App() {
+const App = () => {
 
 
   return (
@@ -16,7 +15,7 @@ function App() {
         <Nav />
         <Switch> 
           <Route path="/" exact   component={Home} />
-          <Route path="/projects" component={Projects}/>
+          <Route path="/projects" component={Projects_Page}/>
           <Route path="/tasks"    component={Tasks}/>
        </Switch>
       </div>
