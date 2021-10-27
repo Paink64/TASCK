@@ -1,18 +1,16 @@
-const projectData = [
-{
-    id:     1,
-    title:  'Software Engineering Project',
-    due:    'October 26th, 2021',
-},
+import { useState, useContext } from 'react'
+import { ProjectContext } from '../Contexts/ProjectContext'
 
-]
 
 const Projects = () => {
+
+    const { projectData } = useContext(ProjectContext);
+
     return (
         <>
-            {projectData.map((project) =>(<h3>{project.title}</h3>)) }
+            {projectData.map((project) => (<h3 key={project.id}>{project.title}</h3>))}
         </>
-        
+
     )
 }
 

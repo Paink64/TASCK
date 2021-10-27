@@ -1,19 +1,26 @@
 import Button from "../components/Button";
+import Form from "../components/Form";
+import { useState } from 'react'
 
-const  Home = () =>  {
-    const onClick = () =>{
-        console.log('Click')
-    }
-    return (
-      <div className="Home">
-       <h1>Home Page</h1>
-       <Button color='gold' text='Create Project' 
-        onClick={onClick}
-        />
-       
-      </div>
-    );
+const Home = () => {
+  const [toggleButton, setToggle] = useState(false);
+
+  const onClick = () => {
+    console.log('Click')
+    setToggle(toggleButton => !toggleButton)
   }
-  
-  export default Home;
-  
+
+
+  return (
+    <div className="Home">
+      <h1>Home</h1>
+      <Button color='gold' text='Create Project'
+        onClick={onClick}
+      />
+      {toggleButton ? <Form /> : null}
+
+    </div>
+  );
+}
+
+export default Home;
