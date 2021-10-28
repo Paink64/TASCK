@@ -1,25 +1,29 @@
-import PropTypes from 'prop-types'
+import React from 'react';
+import Button from './Button.js';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { Link } from 'react-router-dom' ;
+import MyTasks from '../MyTasks';
+//import users from '../App.js'
 
-
-
-const Header = ({ title }) => {
+const Header = ({title, user}) => {
     return (
-        <header>
-            <h1 >{title}</h1>
-            <button></button>
-        </header>
+         <header className='header' style={{ backgroundColor : 'grey'}} >
+            <h1>{title}</h1>
+            <Link to='/MyTasks'>
+            <Button text={user.isOnProject ? 'Tasks' : 'Unavailable'} 
+                color={user.isOnProject ? 'gold' : 'black'} />
+            </Link>
+
+            <Button text={user.isOnProject ? 'Projects' : 'Start Project'}
+                color= 'gold'/>
+
+            <Link to='/Profile'>
+            <Button text={user.isOnProject ? 'Profile/Skills' : 'unavailable'}
+                color={user.isOnProject ? 'gold' : 'black'}/>
+            </Link>
+            
+         </header>
     )
 }
 
-Header.defaultProps = {
-    title: 'Tasck'
-}
-
-Header.propTypes = {
-    title: PropTypes.string.isRequired,
-}
-
-const headingStyle = {
-    color: 'red'
-}
 export default Header
