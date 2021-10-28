@@ -8,6 +8,7 @@ const Form = () => {
         id: 1,
         title: "",
         due: "",
+        show: true,
     });
 
     const [submitted, setSubmitted] = useState(false);

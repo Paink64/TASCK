@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.test{
+  text-align: center;
+}
+
 .image-container {
   flex: 1;
   flex-direction: 'row';
@@ -33,6 +37,8 @@ code {
   font-size: 15px;
   font-family: inherit;
   justify-content: right;
+  align-items: center;
+  text-align: center;
 }
 
 .header {
