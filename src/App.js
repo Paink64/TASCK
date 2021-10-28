@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ProjectContext } from './Contexts/ProjectContext';
 
 const App = () => {
-  const [projectData, setProjects] = useState([
+  const [projectData, setProject] = useState([
     {
       id: 1,
       title: 'Software Engineering Project',
@@ -22,7 +22,7 @@ const App = () => {
     <Router>
       <div className="App">
         <Nav />
-        <ProjectContext.Provider value={{ projectData, setProjects }}>
+        <ProjectContext.Provider value={{ projectData, setProject }}>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/projects" component={Projects_Page} />

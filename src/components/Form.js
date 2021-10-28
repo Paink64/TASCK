@@ -1,6 +1,12 @@
-import {useState} from 'react'
+
+import { ProjectContext } from '../Contexts/ProjectContext'
+import {useState, useContext} from 'react'
 const Form = () => {
+
+    
+
     const [values, setValues] = useState({
+        id: 1,
         title: "",
         due: "",
     });
@@ -17,12 +23,21 @@ const Form = () => {
         setValues({ ...values, due: event.target.value })
     }
 
+    const { projectData, setProject} = useContext(ProjectContext);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (values.title && values.due) {
             setValid(true);
         }
         setSubmitted(true);
+        if (setSubmitted){
+            //id?
+            setProject([values])
+            
+           
+        }
+
     }
 
     return (
@@ -31,6 +46,7 @@ const Form = () => {
                
                 {submitted && valid ? <div className="success-message">
                     Your Project Was Created</div> : null  } 
+                    <label>Project Title</label>
                 <input
                 onChange = {handleTitle}
                 value={values.title}
@@ -41,6 +57,7 @@ const Form = () => {
                     name="title"/>
                     {submitted && !values.title ? <span>Please Enter a Project Name </span> : null }
                 
+
                 <input
                 onChange = {handleDue}
                 value={values.due}

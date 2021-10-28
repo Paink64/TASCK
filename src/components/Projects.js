@@ -8,7 +8,10 @@ const Projects = () => {
 
     return (
         <>
-            {projectData.map((project) => (<h3 key={project.id}>{project.title}</h3>))}
+            
+             {projectData.map((project) => (<h2 style={{color: "black"}} key={project.id}>Project {project.id}: <br/>{project.title} <br/>
+            <h4 class = "date">Due: {project.due}</h4></h2>))}
+            
         </>
 
     )
