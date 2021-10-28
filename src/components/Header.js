@@ -14,14 +14,14 @@ const Header = ({title, user}) => {
                 color={user.isOnProject ? 'gold' : 'black'} />
             </Link>
 
-            <Link to='/Profile'>
-            <Button text={user.isOnProject ? 'Profile/Skills' : 'unavailable'}
-                color={user.isOnProject ? 'gold' : 'black'}/>
-            </Link>
-
             <Link to='/Projects_Page'>
             <Button text={user.isOnProject ? 'Projects' : 'Start Project'}
                 color= 'gold'/>
+            </Link>
+            
+            <Link to='/Profile'>
+            <Button text={user.isOnProject ? 'Profile/Skills' : 'unavailable'}
+                color={user.isOnProject ? 'gold' : 'black'}/>
             </Link>
 
 

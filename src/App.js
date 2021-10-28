@@ -22,7 +22,7 @@ function App() {
     name: 'user1',
     email: 'user1@email.com',
     password: '12345',
-    isOnProject: true,
+    isOnProject: false,
     tasks: ['task1', 'task2', 'task3'],
     projectIDs: [],
   });
@@ -40,21 +40,21 @@ function App() {
 
   //current user
 
+  /*<h2 style={{textAlign: 'center'}}>
+        <Button onClick={() => setSeePopUp(!seePopUp)} color='blue' text='Pop Up button'></Button>
+      {seePopUp && <PopUp toggle={() => setSeePopUp(!seePopUp)} />} */
+
   return (
     <Router>
       <div >
-        <Header title='Tasck Ticket Management' user={userDummy}></Header>
+        <Header title='TASCK ' user={userDummy}></Header>
 
         <ProjectContext.Provider value={{ projectData, setProject }}>
 
         <Route path='/' exact>
       {!userDummy.isOnProject && <h1 style={{textAlign: 'center', marginTop: '200px'}}>
-        Hello, {userDummy.name}.To get started, please click on the 'Start Project' button above.
+        Hello, {userDummy.name}. To get started, please click on the 'Start Project' button above.
         </h1>}
-        <h2 style={{textAlign: 'center'}}>
-        <Button onClick={() => setSeePopUp(!seePopUp)} color='blue' text='Pop Up button'></Button>
-      {seePopUp && <PopUp toggle={() => setSeePopUp(!seePopUp)} />}
-        </h2>
         </Route>
 
         <Route path='/MyTasks'>
@@ -67,12 +67,12 @@ function App() {
       {userDummy.isOnProject && userDummy.tasks.map(task => <h1 style={{textAlign: 'center'}}>{task}</h1>)}
         </Route>
 
-        <Route path='/Profile'>
-        <Profile user={userDummy}></Profile>
-        </Route>
-
         <Route path="/Projects_Page">
         <Projects_Page></Projects_Page>
+        </Route>
+        
+        <Route path='/Profile'>
+        <Profile user={userDummy}></Profile>
         </Route>
 
         </ProjectContext.Provider>
