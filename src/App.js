@@ -10,10 +10,16 @@ import Profile from './Profile';
 import PopUp from './components/PopUp';
 import { ProjectContext } from './ProjectContext';
 import Projects_Page from './Projects_Page'
+import Tasks from './components/Tasks';
 
 
 function App() {
-  const [tasks, setTasks] = useState([]); //used to create, edit tasks
+  const [tasks, setTasks] = useState([
+    //Putting this here to see it working
+    { desc: "Learn React", id: 1 },
+    { desc: "Profit", id: 2 },
+  ]); //used to create, edit tasks
+
   const [users, setUserInfo] = useState([]); //ATM, used to edit/access user info
   //const [userProjects, setUserProjects]
   const [seePopUp, setSeePopUp] = useState(false); //use to affect pop up windows
@@ -22,7 +28,7 @@ function App() {
     name: 'user1',
     email: 'user1@email.com',
     password: '12345',
-    isOnProject: false,
+    isOnProject: true,
     tasks: ['task1', 'task2', 'task3'],
     projectIDs: [],
   });
@@ -50,13 +56,18 @@ function App() {
         <Header title='TASCK ' user={userDummy}></Header>
 
         <ProjectContext.Provider value={{ projectData, setProject }}>
-
+        
+      {/*
+        You serious THIS is how we comment.....
+        Anyways this is the homepage
+        */}
         <Route path='/' exact>
       {!userDummy.isOnProject && <h1 style={{textAlign: 'center', marginTop: '200px'}}>
         Hello, {userDummy.name}. To get started, please click on the 'Start Project' button above.
         </h1>}
         </Route>
 
+        {/*This the MyTasks Page */}
         <Route path='/MyTasks'>
         <MyTasks user={userDummy}></MyTasks>
       {userDummy.isOnProject && <Button onClick={() => { let currentTasks = userDummy.tasks.slice();
@@ -67,10 +78,16 @@ function App() {
       {userDummy.isOnProject && userDummy.tasks.map(task => <h1 style={{textAlign: 'center'}}>{task}</h1>)}
         </Route>
 
+        {/*
+        This is the projects page
+         */}
         <Route path="/Projects_Page">
         <Projects_Page></Projects_Page>
         </Route>
         
+        {/*
+         * This is the the profile
+         */}
         <Route path='/Profile'>
         <Profile user={userDummy}></Profile>
         </Route>
