@@ -9,8 +9,11 @@ import MyTasks from './MyTasks';
 import Profile from './Profile';
 import PopUp from './components/PopUp';
 import { ProjectContext } from './ProjectContext';
-import Projects_Page from './Projects_Page'
-
+import Projects_Page from './Projects_Page';
+import Signup from './Signup';
+import Login from './Login';
+import Signout from './Signout';
+import userDummy from './components/User';
 
 function App() {
   const [tasks, setTasks] = useState([]); //used to create, edit tasks
@@ -18,14 +21,7 @@ function App() {
   //const [userProjects, setUserProjects]
   const [seePopUp, setSeePopUp] = useState(false); //use to affect pop up windows
   const [project, setProjectNew] = useState([]);
-  const [userDummy, setuserDummy] = useState({
-    name: 'user1',
-    email: 'user1@email.com',
-    password: '12345',
-    isOnProject: false,
-    tasks: ['task1', 'task2', 'task3'],
-    projectIDs: [],
-  });
+
   const [projectData, setProject] = useState([
     {
       id: 1,
@@ -36,7 +32,6 @@ function App() {
     },
 
   ])
-
 
   const projects = {}
 
@@ -63,8 +58,8 @@ function App() {
         <MyTasks user={userDummy}></MyTasks>
       {userDummy.isOnProject && <Button onClick={() => { let currentTasks = userDummy.tasks.slice();
         currentTasks.push('task');
-        const newUserDummy = {...userDummy, tasks: currentTasks};
-        setuserDummy(newUserDummy); } }
+        const userDummy = {...userDummy, tasks: currentTasks};
+ } }
         color='green' text='add new task'></Button> }
       {userDummy.isOnProject && userDummy.tasks.map(task => <h1 style={{textAlign: 'center'}}>{task}</h1>)}
         </Route>
@@ -76,6 +71,20 @@ function App() {
         <Route path='/Profile'>
         <Profile user={userDummy}></Profile>
         </Route>
+
+        <Route path="/Login">
+        <Login></Login>
+        </Route>
+
+        <Route path="/Signup">
+        <Signup></Signup>
+        </Route>
+
+        <Route path="/Signout">
+        <Signout User={userDummy}></Signout>
+        </Route>
+
+
 
         </ProjectContext.Provider>
 

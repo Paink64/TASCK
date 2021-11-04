@@ -1,8 +1,8 @@
 import { ProjectContext } from '../ProjectContext'
 import {useState, useContext} from 'react'
+import firebase from './Firebase';
+import userDummy from './User';
 const Form = () => {
-
-    
 
     const [values, setValues] = useState({
         id: 1,
@@ -34,8 +34,21 @@ const Form = () => {
         if (setSubmitted){
             //id?
             setProject([values])
-            
-           
+            var myRef = firebase.database().ref('/users/' + userDummy.userId+'/projectIDs').push();
+            var key = myRef.key;
+            myRef.push({});
+            firebase.database().ref('/users/' + userDummy.userId+'/projectIDs/'+key).set({
+                pId: key,
+            })
+            firebase.database().ref('/Projects/'+key).set({
+                pId: key,
+                ownerId: userDummy.userId,
+                title: values.title,
+                due: values.due
+            })
+            userDummy.projectIDs = key;
+            alert("project id "+userDummy.projectIDs);
+            userDummy.isOnProject = true;
         }
 
     }
