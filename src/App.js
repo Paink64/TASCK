@@ -12,13 +12,46 @@ import { ProjectContext } from './ProjectContext';
 import Projects_Page from './Projects_Page'
 import Tasks from './components/Tasks';
 
+//This is something that I(Matt) am following from a tutorial
+import "./assets/styles.css";
+
 
 function App() {
+  /*
+  'Title' is the title of task itself
+  'desc' is the description of the task
+  'taskID' is the ID of the task to keep track of them
+  'parentProjectID' is what project the task belongs too
+  'dateCreated' when task was created
+  'taskDeadlineDate' Deadline of when task should be completed
+  'complete' boolean stating if task is done
+  'isAssinged' is task assigned to user
+  'assignedTo' user id that task is assigned to
+  */
   const [tasks, setTasks] = useState([
-    //Putting this here to see it working
-    { desc: "Learn React", id: 1 },
-    { desc: "Profit", id: 2 },
-  ]); //used to create, edit tasks
+    { title: "Title",
+      desc: "Description", 
+      taskID: 1,
+      parentProjectID: 0, 
+      dateCreated: "2021-01-03 10:00",
+      taskDeadlineDate: "", 
+      complete: false,
+      isAssigned: false,
+      assignedTo: 0 },
+    { title: "Second Title",
+      desc: "Second Description",  
+      taskID: 2,
+      parentProjectID: 0,  
+      dateCreated: "2021-01-05 15:00",
+      taskDeadlineDate: "", 
+      complete: false,
+      isAssigned: false,
+      assignedTo: 0 },
+  ]);
+  
+
+
+
 
   const [users, setUserInfo] = useState([]); //ATM, used to edit/access user info
   //const [userProjects, setUserProjects]
@@ -29,7 +62,8 @@ function App() {
     email: 'user1@email.com',
     password: '12345',
     isOnProject: true,
-    tasks: ['task1', 'task2', 'task3'],
+    tasks, //tasks is a place holder for to know to show that everthing works. assignedTaskIDs will be a array of taskids that are assigned to used
+    assignedTaskIDs: [],
     projectIDs: [],
   });
   const [projectData, setProject] = useState([
@@ -69,13 +103,7 @@ function App() {
 
         {/*This the MyTasks Page */}
         <Route path='/MyTasks'>
-        <MyTasks user={userDummy}></MyTasks>
-      {userDummy.isOnProject && <Button onClick={() => { let currentTasks = userDummy.tasks.slice();
-        currentTasks.push('task');
-        const newUserDummy = {...userDummy, tasks: currentTasks};
-        setuserDummy(newUserDummy); } }
-        color='green' text='add new task'></Button> }
-      {userDummy.isOnProject && userDummy.tasks.map(task => <h1 style={{textAlign: 'center'}}>{task}</h1>)}
+       <MyTasks user={userDummy}></MyTasks>
         </Route>
 
         {/*
