@@ -186,7 +186,7 @@ nav{
 
 
 .container {
-  max-width: 400px;
+  max-width: 400px ;
   margin: 30px auto;
   overflow: auto;
   min-height: 100px;

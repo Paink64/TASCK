@@ -14,12 +14,11 @@ function Tasks({ tasks }) {
      */
     <div className="row">
       <div className="col-12 text-right">
-        <button className="button primary">New</button>
       </div>
        {tasks.map((task) => (
         <Task task={task} key={task.taskID} />
       ))}
-      <div className="col-12"></div>
+      <div className="col-12"></div>-
     </div>
   );
 }

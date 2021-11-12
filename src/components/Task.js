@@ -7,9 +7,12 @@
 */
 function Task({ task }) {
     return (
-      <div className="col-12 text-left" key={task.taskID}>
-        <h4>{task.title}_ID:{task.taskID}</h4>
-        <n>{task.desc}</n>
+      <div className="card">
+        <div className="col-12 text-left" key={task.taskID}>
+          <h4>{task.title}_ID:{task.taskID}</h4>
+          <n>{task.desc}</n>
+          <n>{task.dateCreated}</n>
+        </div>
       </div>
     );
   }
