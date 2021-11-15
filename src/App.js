@@ -25,9 +25,10 @@ function App() {
     name: 'user1',
     email: 'user1@email.com',
     password: '12345',
+    id: 1,
     isOnProject: true,
-    assignedTaskIDs: [],
-    projectIDs: [],
+    assignedTaskIDs: [1],
+    assginedProjectIDs: [1],
   });
   const [projectData, setProject] = useState([
     {

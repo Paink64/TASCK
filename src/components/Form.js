@@ -45,7 +45,7 @@ const Form = () => {
                
                 {submitted && valid ? <div className="success-message">
                     Your Project Was Created</div> : null  } 
-                    <label>Project Title</label>
+                <label>Project Title</label>
                 <input
                 onChange = {handleTitle}
                 value={values.title}

@@ -5,13 +5,45 @@
 
     TODO CSS: Tasks need to be seperated with CSS. Currently our CSS is conflicting with the tutorials stated CSS.
 */
+/*
+TODO: get Delete working. 
+*/
+import handleDeleteClick from "../MyTasks";
+
 function Task({ task }) {
     return (
       <div className="card">
         <div className="col-12 text-left" key={task.taskID}>
           <h4>{task.title}_ID:{task.taskID}</h4>
-          <n>{task.desc}</n>
-          <n>{task.dateCreated}</n>
+          <div className="col-12 text-left">
+            Description: 
+              <div className="col-12 tex-left">
+                {task.desc}
+                </div>
+            Date Created: {task.dateCreated}
+            <div className="col-12 text-left">
+            Deadline: {task.taskDeadlineDate}
+            </div>
+          </div>
+          <div className="col-12 text-center">
+            {/*
+            Todo for delete
+          */}
+            <button onClick={() => 
+              console.log("deleting task")}>
+                Delete Task</button>
+            {/*
+            Todo for Edit
+          */}
+            <button onClick={() => console.log("editing task")}>Edit Task</button>
+            {/**
+             * Display "Take Task" if task is not assigned
+             * Flesh out assignment button later
+             */}
+            {!task.isAssigned && <button onClick={() => 
+              console.log("taking task")}>
+                Take Task</button> }
+          </div>
         </div>
       </div>
     );

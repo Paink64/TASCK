@@ -1,11 +1,13 @@
 import Task from "./Task";
-
-/*
-This file is has a new button at the top of the page
-It then receives tasks then breaks it down into its components eg: title, desc, etc
-then feeds broken down pieces of task into Task.js the render component using the id as a identifier in the task array.
-*/ 
+import handleDeleteClick from "../MyTasks";
+import { useEffect, useState } from "react";
+/**
+ * 
+ * I now understand. This is a helper function that takes and displays organized Task renders.
+ * 
+ */
 function Tasks({ tasks }) {
+  
   return (
     /**
       Presently the New button does nothing.
@@ -18,7 +20,7 @@ function Tasks({ tasks }) {
        {tasks.map((task) => (
         <Task task={task} key={task.taskID} />
       ))}
-      <div className="col-12"></div>-
+      <div className="col-12"></div>
     </div>
   );
 }
