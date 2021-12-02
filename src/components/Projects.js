@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import firebase from 'firebase';
+import Project from './Project';
 
 
 const Projects = () => {
@@ -23,10 +24,8 @@ const Projects = () => {
             
             {projectList ? 
               projectList
-                .filter(project => project.ownerId == user.uid)
-                .map((project, index) => (<h2 style={{color: "black"}} key={index}>Project {index}:
-                 <br/>{project.title} <br/><h4 class = "date">Due: {project.due}</h4></h2>)) : ''}
-            
+                .filter(project => project.ownerId === user.uid)
+                .map((project, index) => <Project project={project} key={index} />) : ''}
             
         </>
 
