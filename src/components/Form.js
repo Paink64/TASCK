@@ -70,7 +70,7 @@ const Form = () => {
                     name="title"/>
                     {submitted && !values.title ? <span>Please Enter a Project Name </span> : null }
                 
-
+                    <label>Due Date</label>
                 <input
                 onChange = {handleDue}
                 value={values.due}

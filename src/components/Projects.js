@@ -11,7 +11,7 @@ const Projects = () => {
 //ID for testing (Have to change to use logged in user's ID)
   //Need to check the project ID's in the user and then display
   //from title and due date from the project
-    const dummyID = "9z0CbwIp6nN6wI3r2IM0GTFaVff1";
+    const dummyID = "23WymVHOLxUIVZ6l2OxzyF4eMWC2";
  
     var userProjects = {
         projects: [],
@@ -19,7 +19,7 @@ const Projects = () => {
   /*  const [projectData, setProject] = useState([
         {
           userProjects = ,
-         
+         -MptIqK1a6kC1ey8FT-q
         },
     */    
     //Returns the project ID's of the user
@@ -28,14 +28,14 @@ const Projects = () => {
         const userProjectsRef = firebase.database().ref('users/'+ dummyID+ '/projectIDs');
         userProjectsRef.on('value', (snapshot) => {
             userProjects.projects = snapshot.val();
-  //          console.log(userProjects.projects);
+            console.log(userProjects.projects);
           //  console.log(snapshot.val());
  
          
           for(const pId in userProjects.projects){
            //   for (test in  )
            //  if(pID == )
-            //  console.log(pId);                    
+          //    console.log(pId);                    
           }
  
         });
@@ -45,7 +45,7 @@ const Projects = () => {
     useEffect(()=>{
         const projectRef = firebase.database().ref('Projects/');
         projectRef.on('value', (snapshot)=>{
-            console.log(snapshot.val());
+          //  console.log(snapshot.val());
          
             for(const pId in userProjects.projects){
                 for(const test in snapshot.val()){

@@ -25,8 +25,8 @@ function App() {
   const [projectData, setProject] = useState([
     {
       id: 1,
-      title: '',
-      due: '',
+      title: 'Test',
+      due: 'December 1st',
       show: false,
       
     },
