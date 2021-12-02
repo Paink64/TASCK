@@ -80,7 +80,7 @@ const Form = () => {
                 value={values.due}
                     id="due-date"
                     className="form-field"
-                    type="text"
+                    type="date"
                     placeholder="Due Date"
                     name="due" />
                     {submitted && !values.due ? <span>Please Enter a Due Date </span>: null}

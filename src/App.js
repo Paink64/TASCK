@@ -43,7 +43,6 @@ function App() {
     <Router>
       <div >
         
-
         <ProjectContext.Provider value={{ projectData, setProject }}>
 
         <Route path='/' exact>

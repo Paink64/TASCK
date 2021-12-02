@@ -10,13 +10,31 @@ const Login = () => {
     let history = useHistory();
     return (
         <div>
-            <input type="email" placeholder="Email..." id="emailField" />
-            <input type="password" placeholder="Password..." id="passwordField" />
+<form className="register-form">
+               
+               <label>Login</label>
+           <input
+               id="emailField"
+               className="form-field"
+               type="text"
+               placeholder="Email"/>
+           
+
+           <input
+               id="passwordField"
+               className="form-field"
+               type="password"
+               placeholder="Password"/>
+
+       </form>
             <Button onClick={() => {
                 const auth = firebase.auth();
                 var email = document.getElementById("emailField");
                 var password = document.getElementById("passwordField");
-                auth.signInWithEmailAndPassword(email.value,password.value);
+                auth.signInWithEmailAndPassword(email.value,password.value)
+                .catch(err => {
+                    alert(err.message);
+                });
                 firebase.auth().onAuthStateChanged((user) => {
                     if (user) {
                         firebase.database().ref('/users/' + user.uid).on('value',function(snapshot) {
