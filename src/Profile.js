@@ -25,8 +25,8 @@ const Profile = () => {
     return (
         <>
           <div>
-          <h1 style={{textAlign : 'center'}}>{userFullName}'s profile</h1> 
-          <h2>Username: {userName}</h2>
+          <h1 style={{textAlign : 'center'}}>{userDummy.name}'s profile</h1> 
+          <h2>Username: {userDummy.username}</h2>
           <h2>Email: {user.email}</h2>
           <h2>UserId: {user.uid}</h2>
           <h2>Last Login: {lastLogin}</h2>
