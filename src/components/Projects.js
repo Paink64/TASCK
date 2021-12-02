@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { useState, useContext } from 'react'
 import { ProjectContext } from '../ProjectContext'
 import firebase from '../components/Firebase';
@@ -63,13 +64,55 @@ const Projects = () => {
     //Not needed when moved to firebase
     const { projectData } = useContext(ProjectContext);
    
+=======
+import { useState, useEffect } from 'react'
+import firebase from 'firebase';
+import {FaTimes} from 'react-icons/fa'
+
+const Projects = () => {
+    const [projectList, setProjectList] = useState();
+
+    useEffect(() => { 
+    const projectRef = firebase.database().ref('/Projects/');
+    projectRef.on('value', (snapshot) =>{
+        const projects = snapshot.val();
+        const projectList = [];
+        for(let id in projects){
+            projectList.push({id, ...projects[id] });
+        }
+        setProjectList(projectList);
+    });
+    }, []);
+    const user = firebase.auth().currentUser;
+
+
+    //Delete Proj
+    const deleteProj =(id) =>{
+        let key =id
+    firebase.database().ref(`Projects/${key}`).remove()
+    firebase.database().ref(`users/${user.uid}/projectIDs/${key}`).remove()
+        console.log('delete',key)
+    }
+>>>>>>> Stashed changes
     return (
        
         <>
+<<<<<<< Updated upstream
            
              {projectData.map((project) => (<h2 style={{color: "black"}} key={project.id}>Project {project.id}: <br/>{project.title} <br/>
             <h4 class = "date">Due: {project.due}</h4></h2>))}
            
+=======
+            
+            {projectList ? 
+              projectList
+                .filter(project => project.ownerId == user.uid)
+                .map((project, index) => (<h2 style={{color: "black"}} key={index}>Project {index+1}: 
+                <FaTimes style={{color: 'red', cursor: 'pointer'}} onClick={() => deleteProj(project.id)}/>
+                 <br/>{project.title} <br/><h4 class = "date">Due: {project.due}</h4></h2>)) : ''}
+            
+            
+>>>>>>> Stashed changes
         </>
  
     )
