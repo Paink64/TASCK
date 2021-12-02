@@ -7,7 +7,7 @@ import firebase from './components/Firebase';
 import { useHistory } from 'react-router-dom';
 import userDummy from './components/User';
 
-const Signup = ({User}) => {
+const Signup = () => {
     let history = useHistory();
     return (
         <div>
@@ -28,26 +28,21 @@ const Signup = ({User}) => {
                         firebase.database().ref('/users/' + user.uid).set({
                             email: email.value,
                             full_name: fullName.value,
-                            projectIDs:[null],
-                            tasks: [null],
+                            projectIDs:[],
+                            tasks: [],
                             userId: user.uid,
                             userName: userName.value,
-                            lastLogin: Date.now()
+                            lastLogin: Date.now(),
+                            isOnProject: false
                         })
-                        userDummy.email = email.value;
-                        userDummy.name = fullName.value;   
-                        userDummy.username = userName.value;
-                        userDummy.isOnProject =  false;
-                        userDummy.isLoggedOn =  true;
-                        userDummy.tasks =  [null];
-                        userDummy.projectIDs =  [null];
-                        userDummy.lastLogin = Date.now();
+                        //ignore this, I just used it to add tasks to database
+                        //var TASKS = firebase.database().ref('tasks/').push().set('task 1 placeholder');
                         history.push('/Profile');
                     }
                     });
             }} text='Sign up' color='gold'/>
-            <Link to='/Signup'>
-                <Button text="Don't have an accout? Sign up" color='gold'></Button>
+            <Link to='/Login'>
+                <Button text="Already have an accout? Log In" color='gold'></Button>
             </Link>
         </div>
     )
