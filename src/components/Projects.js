@@ -1,16 +1,32 @@
-import { useState, useContext } from 'react'
-import { ProjectContext } from '../ProjectContext'
+import { useState, useEffect } from 'react'
+import firebase from 'firebase';
 
 
 const Projects = () => {
+    const [projectList, setProjectList] = useState();
 
-    const { projectData } = useContext(ProjectContext);
+    useEffect(() => { 
+    const projectRef = firebase.database().ref('/Projects/');
+    projectRef.on('value', (snapshot) =>{
+        const projects = snapshot.val();
+        const projectList = [];
+        for(let id in projects){
+            projectList.push({id, ...projects[id] });
+        }
+        setProjectList(projectList);
+    });
+    }, []);
+    const user = firebase.auth().currentUser;
 
     return (
         <>
             
-             {projectData.map((project) => (<h2 style={{color: "black"}} key={project.id}>Project {project.id}: <br/>{project.title} <br/>
-            <h4 class = "date">Due: {project.due}</h4></h2>))}
+            {projectList ? 
+              projectList
+                .filter(project => project.ownerId == user.uid)
+                .map((project, index) => (<h2 style={{color: "black"}} key={index}>Project {index}:
+                 <br/>{project.title} <br/><h4 class = "date">Due: {project.due}</h4></h2>)) : ''}
+            
             
         </>
 

@@ -1,33 +1,57 @@
 import React from 'react';
 import Button from './Button.js';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Link } from 'react-router-dom' ;
-import MyTasks from '../MyTasks';
-import userDummy from './User';
+import firebase from './Firebase';
+import { useState } from 'react';
 
 //import users from '../App.js'
-const Header = ({title, user}) => {
-    userDummy.isLoggedOn = userDummy.isLoggedOn;
+const Header = ({title}) => {
+    const [currentuser, setUser] = useState();
+    const [project, setIsOnProject] = useState();
+    
+    firebase.auth().onAuthStateChanged( (user) => {
+        if(user) {
+            setUser(user);
+            const isOnProjectRef = firebase.database().ref('users/'+ user.uid);
+            
+            isOnProjectRef.get().then((snapshot) => {
+                const data = snapshot.val();
+                setIsOnProject(data.isOnProject);
+            })
+        }
+    }
+    )    
+
     return (
          <header className='header' style={{ backgroundColor : 'grey'}} >
             <h1>{title}</h1>
+            
+            {currentuser ? 
             <Link to='/MyTasks'>
-            <Button text={user.isOnProject ? 'Tasks' : 'Unavailable'} 
-                color={user.isOnProject ? 'gold' : 'black'} />
-            </Link>
+            <Button text={project ? 'Tasks' : 'No Tasks'} 
+                color={project ? 'gold' : 'black'} />
+            </Link> 
+            : <Button text={ 'Unavailable'} 
+            color={'black'} />}
 
             <Link to='/Projects_Page'>
-            <Button text={user.isOnProject ? 'Projects' : 'Start Project'}
+            <Button text={project ? 'Projects' : 'Start Project'}
                 color= 'gold'/>
             </Link>
             
+            {currentuser ? 
             <Link to='/Profile'>
-            <Button text={userDummy.isLoggedOn ? 'Profile/Skills' : 'unavailable'}
-                color={userDummy.isLoggedOn ? 'gold' : 'black'}/>
-            </Link>
+            <Button text={'Profile/Skills'}
+                color={'gold'}/>
+            </Link> 
+            :
+            <Button text={'unavailable'}
+                color={'black'}/>
+            }
+            
 
-            <Link to={userDummy.isLoggedOn ? '/Signout' : '/Login'}>
-            <Button text={userDummy.isLoggedOn ? 'Sign Out' : 'Login / Sign up'}
+            <Link to={currentuser ? '/Signout' : '/Login'}>
+            <Button text={currentuser ? 'Sign Out' : 'Login / Sign up'}
                 color='gold'/>
             </Link>
 

@@ -7,7 +7,7 @@ import { ProjectContext } from './ProjectContext'
 const Projects_Page =() => {
   const { projectData, setProject} = useContext(ProjectContext);
   const onClick = () => {
-    console.log('Click')
+    //console.log('Click')
     setToggle(toggleButton => !toggleButton)
   }
 
@@ -19,9 +19,7 @@ const Projects_Page =() => {
       <Button color='gold' text='Create Project'
         onClick={onClick} />
       {toggleButton ? <Form /> : null}
-      
-{console.log(projectData.this)}
-      
+            
         <div className='container'><Projects /></div> 
     </div>
   );

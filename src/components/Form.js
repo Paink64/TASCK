@@ -24,6 +24,7 @@ const Form = () => {
     }
 
     const { projectData, setProject} = useContext(ProjectContext);
+    const user = firebase.auth().currentUser;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -34,21 +35,24 @@ const Form = () => {
         if (setSubmitted){
             //id?
             setProject([values])
-            var myRef = firebase.database().ref('/users/' + userDummy.userId+'/projectIDs').push();
+            var myRef = firebase.database().ref('/users/' + user.uid+'/projectIDs').push();
             var key = myRef.key;
             myRef.push({});
-            firebase.database().ref('/users/' + userDummy.userId+'/projectIDs/'+key).set({
+            firebase.database().ref('/users/' + user.uid+'/projectIDs/'+key).set({
                 pId: key,
             })
             firebase.database().ref('/Projects/'+key).set({
                 pId: key,
-                ownerId: userDummy.userId,
+                ownerId: user.uid,
                 title: values.title,
                 due: values.due
             })
+            var userRef = firebase.database().ref('/users/'+ user.uid);
+            userRef.update({
+                isOnProject: true
+            })
             userDummy.projectIDs = key;
             alert("project id "+userDummy.projectIDs);
-            userDummy.isOnProject = true;
         }
 
     }

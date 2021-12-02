@@ -6,7 +6,7 @@ import users from './App';
 import firebase from './components/Firebase';
 import userDummy from './components/User';
 import { useHistory } from 'react-router-dom';
-const Login = ({User}) => {
+const Login = () => {
     let history = useHistory();
     return (
         <div>
