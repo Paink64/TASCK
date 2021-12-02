@@ -46,6 +46,7 @@ code {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  background-color: #444B53
 }
 
 .modal {
@@ -207,6 +208,7 @@ nav{
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  background-color: #444B53
 }
 
 .btn {
@@ -291,4 +293,16 @@ nav{
 footer {
   margin-top: 30px;
   text-align: center;
+}
+
+.navLogo{
+  color: transparent;
+  background-image: url(/src/components/Logo-Sml.jpg);
+  width: 134px;
+  height: 98px;
+  background-size: cover;
+}
+
+.header {
+  background-color: #444B53
 }

@@ -23,8 +23,8 @@ const Header = ({title}) => {
     )    
 
     return (
-         <header className='header' style={{ backgroundColor : 'grey'}} >
-            <h1>{title}</h1>
+         <header className='header'>
+            <div class="navLogo"></div>
             
             {currentuser ? 
             <Link to='/MyTasks'>
